@@ -18,20 +18,19 @@ export function ShowTicket(props) {
   const search = window.location.search;
   const params = new URLSearchParams(search);
   let code = params.get('code');
-  console.log(params);
 
   const { loading, error, data } = useQuery(FETCH_TICKET, {
     variables: { code }
   });
 
-  if (loading) return (<div class="message">Laden...</div>);
-  if (error) return (<div class="message">Er is een fout opgetreden bij het ophalen van het ticket:<br />
+  if (loading) return (<div className="message">Laden...</div>);
+  if (error) return (<div className="message">Er is een fout opgetreden bij het ophalen van het ticket:<br />
     `${error.message}`</div>);
 
   const ticket = data.tickets[0];
 
   if (ticket === undefined) {
-    return ( <div class="message">Ticket niet gevonden; controleer of de link correct is ingevoerd.</div>)
+    return ( <div className="message">Ticket niet gevonden; controleer of de link correct is ingevoerd.</div>)
   }
 
   const { checkins_left, type } = ticket;

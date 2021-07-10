@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import AppTicket from './AppTicket'
+import { ShowTicket } from './components/ShowTicket'
 import {
   ApolloClient,
   createHttpLink,
@@ -35,7 +35,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <AppTicket />
+      <ShowTicket />
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
