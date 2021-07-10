@@ -12,7 +12,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        ticket: resolve(__dirname, 'ticket/index.html')
+        ticket: resolve(__dirname, 'ticket/index.html'),
+        sell: resolve(__dirname, 'sell/index.html'),
+        checkin: resolve(__dirname, 'checkin/index.html')
       }
     }
   }

@@ -31,7 +31,7 @@ mutation insert_single_ticket($object: tickets_insert_input!) {
 }
 `
 
-export function Checkin(props) {
+export function ScanTicket(props) {
   const [getTicket, { loading, error, data }] = useLazyQuery(GET_TICKET);
   const [updateTicket, { loading, error, data }] = useMutation(UPDATE_TICKET);
 
