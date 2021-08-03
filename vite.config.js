@@ -16,8 +16,13 @@ export default defineConfig({
         main: resolve(__dirname, 'src/index.html'),
         ticket: resolve(__dirname, 'src/ticket/index.html'),
         sell: resolve(__dirname, 'src/sell/index.html'),
-        checkin: resolve(__dirname, 'src/checkin/index.html')
+        scan: resolve(__dirname, 'src/scan/index.html')
       }
     }
+  },
+
+  server: {
+    host: '0.0.0.0',
+    https: true
   }
 })

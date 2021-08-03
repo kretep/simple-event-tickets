@@ -49,7 +49,7 @@ export function ShowTicket(props) {
 
         <span style={{fontSize: "32px", fontWeight: "bold"}}>
         { checkins_left == 1 && `(${checkins_left} bezoek over)` }
-        { checkins_left > 1 && `(${checkins_left} bezoeken over)` }
+        { checkins_left != 1 && `(${checkins_left} bezoeken over)` }
 
         </span>
       </div>
