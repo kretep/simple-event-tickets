@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import { TokenEntry } from "./TokenEntry";
 import { FormControl, Input, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
 import QrScanner from "qr-scanner";
+import './ScanTicket.css';
 
 const GET_TICKET = gql`
 query getTicket($code:String) {
@@ -31,7 +32,6 @@ export function ScanTicket(props) {
   const [doLockCode, setDoLockCode] = useState(false);
   const [getTicket, { loading: loadingTicket, error: errorTicket, data: dataTicket }] = useLazyQuery(GET_TICKET);
   const [checkinTicket, { loading, error, data }] = useMutation(CHECKIN_TICKET);
-  const [increment, setIncrement] = useState(1);
   const display = useRef();
   const scanner = useRef();
 
@@ -56,7 +56,6 @@ export function ScanTicket(props) {
 
 
   useEffect(() => {
-    console.log(display.current);
     scanner.current = new QrScanner(display.current, onScan);
     scanner.current.start();
     return () => {
@@ -89,7 +88,7 @@ export function ScanTicket(props) {
       </div>
       
       <div>
-        <h2>Check-in</h2>
+        <h2>Scan ticket</h2>
         { !doLockCode && 
           (<Fragment><video width="100%" ref={display}></video>
           <form onSubmit={onGetTicket}>
@@ -109,7 +108,8 @@ export function ScanTicket(props) {
 
       {doLockCode &&
         (<div>
-          <Button variant="contained" onClick={handleCheckin}>Check in</Button>&nbsp;&nbsp;&nbsp;
+          { ticket && ticket.checkins_left > 0 && <Button variant="contained" onClick={handleCheckin}>Check in</Button> }
+          &nbsp;&nbsp;&nbsp;
           <Button variant="contained" onClick={reset}>Reset</Button>
         </div>)}
 
